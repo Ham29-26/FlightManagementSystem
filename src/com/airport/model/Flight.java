@@ -9,7 +9,14 @@ public class Flight {
 	private String status;
 	private int gateNumber;
 	
-	
+	public Flight() {
+		flightNumber = "";
+		origin = "";
+		destination = "";
+		departureTime = "";
+		status = "";
+		gateNumber = -1;
+	}
 	
 	public Flight(String flightNumber, String origin, String destination, String departureTime, String status,
 			int gateNumber) {

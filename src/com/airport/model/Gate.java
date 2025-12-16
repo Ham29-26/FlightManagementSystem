@@ -5,10 +5,10 @@ public class Gate {
 	private int gateNumber;
 	private boolean isAvailable;
 	
-	public Gate(int gateNumber) {
+	public Gate(int gateNumber, boolean isAvailable) {
 		super();
 		this.gateNumber = gateNumber;
-		this.isAvailable = true;
+		this.isAvailable = isAvailable;
 	}
 	
 	//getter and setter methods pre-generated
