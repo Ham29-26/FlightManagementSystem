@@ -85,8 +85,10 @@ public class Main {
         
         //printing action history
         System.out.println("\nAction History (most recent first):");
+        int count = 1;
         for (String action : airport.getActionHistory()) {  // assuming you add a getter for actionHistory
-            System.out.println(action);
+            System.out.println(count + ". " + action);
+            count++;
         }
         
         
