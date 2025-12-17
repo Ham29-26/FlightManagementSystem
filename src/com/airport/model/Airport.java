@@ -46,6 +46,10 @@ public class Airport {
 		gates.remove(gate);
 	}
 	
+	public Deque<String> getActionHistory() {
+	    return actionHistory;
+	}
+	
 	//airport logic methods are implemented from here onwards
 	public void assignGateToFlight(Flight flight) {
 		boolean assigned = false;   //using a boolean variable to keep track of assigned status

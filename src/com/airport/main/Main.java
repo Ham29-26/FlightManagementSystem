@@ -74,6 +74,20 @@ public class Main {
         System.out.println();
         airport.viewBoardingQueue();
         
+     // 7. Board next flight
+        System.out.println();
+        airport.boardNextFlight();
+
+        // 8. View queue again
+        System.out.println();
+        airport.viewBoardingQueue();
+        
+        
+        //printing action history
+        System.out.println("\nAction History (most recent first):");
+        for (String action : airport.getActionHistory()) {  // assuming you add a getter for actionHistory
+            System.out.println(action);
+        }
         
         
 	}
