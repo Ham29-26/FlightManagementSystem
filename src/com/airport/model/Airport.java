@@ -67,7 +67,57 @@ public class Airport {
 		
 	}
 	
-	//temporary test comment
+	
+	public void addToBoardingQueue(Flight flight) {
+		if (flight.getGateNumber() != -1) {
+			boardingQueue.add(flight);
+			actionHistory.push("Added flight " + flight.getFlightNumber() + " to boarding queue");
+			System.out.println("Successfully added flight " + flight.getFlightNumber() + " to the boarding queue");
+		} else {
+			System.out.println("ERROR: Flight has not been assigned a gate");
+		}
+	}
+	
+	
+	public void boardNextFlight() {
+		if (!boardingQueue.isEmpty()) {
+			Flight first = boardingQueue.remove();
+			int firstGate = first.getGateNumber();
+			
+			first.setStatus("Boarded");
+			
+			for (Gate g: gates) {
+				if (g.getGateNumber() == firstGate) {
+					g.setAvailable(true);
+				}
+			}
+			
+			first.setGateNumber(-1);
+			
+			actionHistory.push("Flight " + first.getFlightNumber() + " boarded from gate " + firstGate);
+			
+			System.out.println("Flight " + first.getFlightNumber() + " boarded from gate " + firstGate);
+			
+		} else {
+			System.out.println("No flights in boarding queue");
+		}
+	}
+	
+	
+	public void viewBoardingQueue() {
+		if (!boardingQueue.isEmpty()) {
+			System.out.println("Flights waiting to board:");
+			int serialCount = 1;
+			
+			for (Flight f: boardingQueue) {
+				System.out.println(serialCount + ". " + f.getFlightNumber());
+				serialCount++;
+			}
+			
+		} else {
+			System.out.println("Boarding queue is empty");
+		}
+	}
 	
 
 }

@@ -5,6 +5,11 @@ public class Gate {
 	private int gateNumber;
 	private boolean isAvailable;
 	
+	public Gate() {
+		gateNumber = -1;
+		isAvailable = true;
+	}
+	
 	public Gate(int gateNumber, boolean isAvailable) {
 		super();
 		this.gateNumber = gateNumber;
