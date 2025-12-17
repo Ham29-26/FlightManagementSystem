@@ -123,5 +123,22 @@ public class Airport {
 		}
 	}
 	
+	
+	public void undoLastAction() {
+		if (!actionHistory.isEmpty()) {
+			//storing the undone action in a separate String variable using the peek() 
+            //method so as to not accidentally delete the recently completed action
+			String action = actionHistory.peek();  
+			
+			//now using to pop to delete the most recent action
+			actionHistory.pop();
+			
+			//confirming the requested action has been undone
+			System.out.println("Undid action: " + action);
+		} else {
+			System.out.println("No actions to undo");
+		}
+	}
+	
 
 }

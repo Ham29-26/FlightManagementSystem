@@ -86,11 +86,40 @@ public class Main {
         //printing action history
         System.out.println("\nAction History (most recent first):");
         int count = 1;
-        for (String action : airport.getActionHistory()) {  // assuming you add a getter for actionHistory
+        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
             System.out.println(count + ". " + action);
             count++;
         }
         
+        //testing undoLastAction method
+        System.out.println("\nTesting undoLastAction()");
+        System.out.println("Current Action History (most recent first):");
+        int count1 = 1;
+        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
+            System.out.println(count1 + ". " + action);
+            count1++;
+        }
+        
+        System.out.println();
+        airport.undoLastAction();
+        
+        System.out.println("\nNew Action History (most recent action should be removed or popped):");
+        int count2 = 1;
+        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
+            System.out.println(count2 + ". " + action);
+            count2++;
+        }
+        
+        //testing further by undoing another action
+        System.out.println();
+        airport.undoLastAction();
+        
+        System.out.println("\nNew Action History (most recent action should be removed or popped):");
+        int count3 = 1;
+        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
+            System.out.println(count3 + ". " + action);
+            count3++;
+        }
         
 	}
 
