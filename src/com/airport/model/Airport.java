@@ -221,7 +221,7 @@ public class Airport {
 			}
 		}
 		
-		System.out.println("ERROR: Flight could not be found");
+		System.out.println("ERROR: Flight could not be found"); 
 	}
 
 

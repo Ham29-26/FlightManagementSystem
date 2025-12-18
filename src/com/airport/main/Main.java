@@ -125,7 +125,7 @@ public class Main {
         System.out.println("\nTesting flight search:");
         airport.searchFlightByNumber("EK123");
         System.out.println();
-        airport.searchFlightByNumber("QR999"); // should not exist
+        airport.searchFlightByNumber("QR999"); //should not exist
         
         
         //testing new searchFlightByStatus method
