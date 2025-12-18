@@ -1,7 +1,10 @@
 package com.airport.model;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
 import java.util.Queue;
@@ -44,6 +47,10 @@ public class Airport {
 	
 	public void removeGate(Gate gate) {
 		gates.remove(gate);
+	}
+	
+	public List<Flight> getFlights() {
+		return flights;
 	}
 	
 	public Deque<String> getActionHistory() {
@@ -185,6 +192,36 @@ public class Airport {
 			System.out.println("No flights found with status: " + status);
 		}
 		
+	}
+	
+	
+	public void sortFlightsByDepartureTime() {
+		Collections.sort(flights, (f1, f2) -> {
+			LocalTime t1 = LocalTime.parse(f1.getDepartureTime(), DateTimeFormatter.ofPattern("HH:mm"));
+		    LocalTime t2 = LocalTime.parse(f2.getDepartureTime(), DateTimeFormatter.ofPattern("HH:mm"));
+		    return t1.compareTo(t2);
+		});
+	}
+	
+	
+	public void sortFlightsByStatus() {
+		Collections.sort(flights, (f1, f2) -> f1.getStatus().ordinal() - f2.getStatus().ordinal());
+	}
+	
+	
+	public void updateFlightStatus(String flightNumber, FlightStatus newStatus) {
+		
+		for (Flight f: flights) {
+			if (f.getFlightNumber().equalsIgnoreCase(flightNumber)) {
+				f.setStatus(newStatus);
+				
+				actionHistory.push("Updated flight " + flightNumber + " status to " + newStatus);
+				System.out.println("CONFIRMATION: Updated flight " + flightNumber + " status to " + newStatus);
+				return;
+			}
+		}
+		
+		System.out.println("ERROR: Flight could not be found");
 	}
 
 

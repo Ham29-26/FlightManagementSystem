@@ -87,35 +87,35 @@ public class Main {
             count++;
         }
         
-        //testing undoLastAction method
-        System.out.println("\nTesting undoLastAction()");
-        System.out.println("Current Action History (most recent first):");
-        int count1 = 1;
-        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
-            System.out.println(count1 + ". " + action);
-            count1++;
-        }
-        
-        System.out.println();
-        airport.undoLastAction();
-        
-        System.out.println("\nNew Action History (most recent action should be removed or popped):");
-        int count2 = 1;
-        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
-            System.out.println(count2 + ". " + action);
-            count2++;
-        }
-        
-        //testing further by undoing another action
-        System.out.println();
-        airport.undoLastAction();
-        
-        System.out.println("\nNew Action History (most recent action should be removed or popped):");
-        int count3 = 1;
-        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
-            System.out.println(count3 + ". " + action);
-            count3++;
-        }
+//        //testing undoLastAction method
+//        System.out.println("\nTesting undoLastAction()");
+//        System.out.println("Current Action History (most recent first):");
+//        int count1 = 1;
+//        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
+//            System.out.println(count1 + ". " + action);
+//            count1++;
+//        }
+//        
+//        System.out.println();
+//        airport.undoLastAction();
+//        
+//        System.out.println("\nNew Action History (most recent action should be removed or popped):");
+//        int count2 = 1;
+//        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
+//            System.out.println(count2 + ". " + action);
+//            count2++;
+//        }
+//        
+//        //testing further by undoing another action
+//        System.out.println();
+//        airport.undoLastAction();
+//        
+//        System.out.println("\nNew Action History (most recent action should be removed or popped):");
+//        int count3 = 1;
+//        for (String action : airport.getActionHistory()) {  //prints most recent action first as per LIFO
+//            System.out.println(count3 + ". " + action);
+//            count3++;
+//        }
         
         System.out.println("\nTesting status of flight " + f1.getFlightNumber() + ": " + f1.getStatus());
         System.out.println("Testing status of flight " + f2.getFlightNumber() + ": " + f2.getStatus());
@@ -137,6 +137,38 @@ public class Main {
         
         System.out.println("\nFlights with status DELAYED:");
         airport.searchFlightsByStatus(FlightStatus.DELAYED); //should not exist
+        
+        
+        //sorting flights by departure time
+        System.out.println("\nFlights sorted by departure time:");
+        airport.sortFlightsByDepartureTime();
+        for (Flight f : airport.getFlights()) {
+            System.out.println(f.getFlightNumber() + " | " +
+                               f.getOrigin() + " -> " + f.getDestination() + " | " +
+                               f.getDepartureTime() + " | " + f.getStatus());
+        }
+        
+        
+        //sorting flights by status
+      //sorting flights by status
+        System.out.println("\nFlights sorted by status:");
+        airport.sortFlightsByStatus();
+        for (Flight f : airport.getFlights()) {
+            System.out.println(f.getFlightNumber() + " | " +
+                               f.getOrigin() + " -> " + f.getDestination() + " | " +
+                               f.getDepartureTime() + " | " + f.getStatus());
+        }
+        
+        //updating flight status
+        System.out.println("\nUpdating flight status of flight EK123 to delayed");
+        
+        airport.updateFlightStatus("ek123", FlightStatus.DELAYED);
+        
+        System.out.println("Printing further confirmation: ");
+        System.out.println(f1.getFlightNumber() + " | " +
+                f1.getOrigin() + " -> " + f1.getDestination() + " | " +
+                f1.getDepartureTime() + " | " + f1.getStatus());
+
 
 	}
 
