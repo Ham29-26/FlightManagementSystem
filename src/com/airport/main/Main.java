@@ -2,6 +2,7 @@ package com.airport.main;
 
 import com.airport.model.Airport;
 import com.airport.model.Flight;
+import com.airport.model.FlightStatus;
 import com.airport.model.Gate;
 
 public class Main {
@@ -16,10 +17,7 @@ public class Main {
 //        airport.addGate(new Gate(20, true));
 
         // Add flight
-        Flight f10 = new Flight();
-        f10.setFlightNumber("AI101");
-        f10.setOrigin("DXB");
-        f10.setDestination("LHR");
+        Flight f10 = new Flight("AI101", "Delhi", "Prague", "22:55");
 
         airport.addFlight(f10);
         airport.assignGateToFlight(f10);
@@ -128,6 +126,18 @@ public class Main {
         airport.searchFlightByNumber("EK123");
         System.out.println();
         airport.searchFlightByNumber("QR999"); // should not exist
+        
+        
+        //testing new searchFlightByStatus method
+        System.out.println("\nFlights with status SCHEDULED:");
+        airport.searchFlightsByStatus(FlightStatus.SCHEDULED); 
+
+        System.out.println("\nFlights with status BOARDED:");
+        airport.searchFlightsByStatus(FlightStatus.BOARDED); 
+        
+        System.out.println("\nFlights with status DELAYED:");
+        airport.searchFlightsByStatus(FlightStatus.DELAYED); //should not exist
+
 	}
 
 }

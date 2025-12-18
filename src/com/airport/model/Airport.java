@@ -164,5 +164,28 @@ public class Airport {
 		System.out.println("Flight " + flightNumber + " not found.");
 	}
 	
+	
+	public void searchFlightsByStatus(FlightStatus status) {
+		boolean found = false;
+		
+		for (Flight f: flights) {
+			if (f.getStatus() == status) {
+				System.out.println(
+		                f.getFlightNumber() + " | " +
+		                f.getOrigin() + " -> " +
+		                f.getDestination() + " | " +
+		                f.getDepartureTime() + " | " +
+		                f.getStatus()
+		            );
+				found = true;
+			}
+		}
+		
+		if (!found) {
+			System.out.println("No flights found with status: " + status);
+		}
+		
+	}
+
 
 }
