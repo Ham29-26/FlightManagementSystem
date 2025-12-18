@@ -6,27 +6,23 @@ public class Flight {
 	private String origin;
 	private String destination;
 	private String departureTime;
-	private String status;
+	private FlightStatus status;
 	private int gateNumber;
 	
 	public Flight() {
-		flightNumber = "";
-		origin = "";
-		destination = "";
-		departureTime = "";
-		status = "";
+		status = FlightStatus.SCHEDULED;
 		gateNumber = -1;
 	}
 	
-	public Flight(String flightNumber, String origin, String destination, String departureTime, String status,
+	public Flight(String flightNumber, String origin, String destination, String departureTime, FlightStatus status,
 			int gateNumber) {
 		super();
 		this.flightNumber = flightNumber;
 		this.origin = origin;
 		this.destination = destination;
 		this.departureTime = departureTime;
-		this.status = "Scheduled";
-		this.gateNumber = -1; // means not assigned
+		this.status = status;
+		this.gateNumber = gateNumber;
 	}
 
 	//getter and setter methods pre-generated
@@ -63,10 +59,10 @@ public class Flight {
 	}
 	
 	
-	public String getStatus() {
+	public FlightStatus getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(FlightStatus status) {
 		this.status = status;
 	}
 	

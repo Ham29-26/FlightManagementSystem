@@ -8,10 +8,10 @@ import java.util.Queue;
 
 public class Airport {
 	
-	private List<Flight> flights = new ArrayList<>();
-	private List<Gate> gates = new ArrayList<>();
-	private Queue<Flight> boardingQueue = new ArrayDeque<>();
-	private Deque<String> actionHistory = new ArrayDeque<>();  //being used as a stack
+	private List<Flight> flights;
+	private List<Gate> gates;
+	private Queue<Flight> boardingQueue;
+	private Deque<String> actionHistory;  //being used as a stack
 
 	public Airport() {
 		flights = new ArrayList<>();
@@ -88,7 +88,7 @@ public class Airport {
 			Flight first = boardingQueue.remove();
 			int firstGate = first.getGateNumber();
 			
-			first.setStatus("Boarded");
+			first.setStatus(FlightStatus.BOARDED);
 			
 			for (Gate g: gates) {
 				if (g.getGateNumber() == firstGate) {

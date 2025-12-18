@@ -121,6 +121,9 @@ public class Main {
             count3++;
         }
         
+        System.out.println("\nTesting status of flight " + f1.getFlightNumber() + ": " + f1.getStatus());
+        System.out.println("Testing status of flight " + f2.getFlightNumber() + ": " + f2.getStatus());
+        
 	}
 
 }
