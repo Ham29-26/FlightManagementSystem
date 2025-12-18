@@ -140,5 +140,29 @@ public class Airport {
 		}
 	}
 	
+	
+	public void searchFlightByNumber(String flightNumber) {
+
+		for (Flight f: flights) {
+			if (f.getFlightNumber().equalsIgnoreCase(flightNumber)) {
+				System.out.println("Flight Found:");
+				System.out.println("Flight Number: " + f.getFlightNumber());
+				System.out.println("From: " + f.getOrigin());
+				System.out.println("To: " + f.getDestination());
+				System.out.println("Departure Time: " + f.getDepartureTime());
+				System.out.println("Status: " + f.getStatus());
+
+				if (f.getStatus() == FlightStatus.BOARDED) {
+					System.out.println("Gate Number: Flight has been boarded so gate is free");
+				} else {
+					System.out.println("Gate Number: " + f.getGateNumber());				
+				}
+				return;
+			}
+		}
+		
+		System.out.println("Flight " + flightNumber + " not found.");
+	}
+	
 
 }

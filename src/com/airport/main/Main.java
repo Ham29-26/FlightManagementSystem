@@ -47,14 +47,12 @@ public class Main {
         airport.addGate(g2);
 
         // 2. Add flights and assign gates
-        Flight f1 = new Flight();
-        f1.setFlightNumber("EK123");
+        Flight f1 = new Flight("EK123", "Dubai", "New York", "09:35");
         airport.addFlight(f1);
         airport.assignGateToFlight(f1);
         
 
-        Flight f2 = new Flight();
-        f2.setFlightNumber("QR456");
+        Flight f2 = new Flight("QR456", "Sydney", "Kuala Lampur", "16:10");
         airport.addFlight(f2);
         airport.assignGateToFlight(f2);
 
@@ -124,6 +122,12 @@ public class Main {
         System.out.println("\nTesting status of flight " + f1.getFlightNumber() + ": " + f1.getStatus());
         System.out.println("Testing status of flight " + f2.getFlightNumber() + ": " + f2.getStatus());
         
+        
+        //testing new searchFlightByNumber method
+        System.out.println("\nTesting flight search:");
+        airport.searchFlightByNumber("EK123");
+        System.out.println();
+        airport.searchFlightByNumber("QR999"); // should not exist
 	}
 
 }

@@ -24,6 +24,16 @@ public class Flight {
 		this.status = status;
 		this.gateNumber = gateNumber;
 	}
+	
+	//more realistic default constructor which sets flight status to scheduled and gate to -1 which mean its not been assigned yet
+	public Flight(String flightNumber, String origin, String destination, String departureTime) {
+		this.flightNumber = flightNumber;
+		this.origin = origin;
+		this.destination = destination;
+		this.departureTime = departureTime;
+		status = FlightStatus.SCHEDULED;
+		gateNumber = -1;
+	}
 
 	//getter and setter methods pre-generated
 	public String getFlightNumber() {
