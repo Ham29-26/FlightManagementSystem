@@ -223,6 +223,25 @@ public class Airport {
 		
 		System.out.println("ERROR: Flight could not be found"); 
 	}
+	
+	
+	public void removeFlightByNumber(String flightNumber) {
+		
+		for (Flight f: flights) {
+			if (f.getFlightNumber().equalsIgnoreCase(flightNumber)) {
+				int freedGate = f.getGateNumber();
+				f.setGateNumber(-1);
+				removeFlight(f);
+				boardingQueue.remove(f);
+				actionHistory.push("Flight " + flightNumber + " has been deleted from the system");
+				
+				System.out.println("CONFIRMATION: Flight " + flightNumber + " has been deleted from the system");
+				return;
+			}
+		}
+		
+		System.out.println("ERROR: Flight could not be found");
+	}
 
 
 }

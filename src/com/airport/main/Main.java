@@ -16,20 +16,7 @@ public class Main {
 //        airport.addGate(new Gate(10, true));
 //        airport.addGate(new Gate(20, true));
 
-        // Add flight
-        Flight f10 = new Flight("AI101", "Delhi", "Prague", "22:55");
-
-        airport.addFlight(f10);
-        airport.assignGateToFlight(f10);
-
-        // Print flight info
-        if (f10.getGateNumber() != -1) {
-        	System.out.println("Flight " + f10.getFlightNumber() + " assigned to gate " + f10.getGateNumber());
-        } else {
-        	System.out.println("Flight " + f10.getFlightNumber() + " has not been assigned to a gate");
-        }
-        
-        
+   
         //testing the gate queue 
         System.out.println("\nTesting Gate queue logic.....");
         
@@ -43,6 +30,9 @@ public class Main {
         g2.setGateNumber(2);
         g2.setAvailable(true);
         airport.addGate(g2);
+        
+        Gate g3 = new Gate(3, true);
+        airport.addGate(g3);
 
         // 2. Add flights and assign gates
         Flight f1 = new Flight("EK123", "Dubai", "New York", "09:35");
@@ -53,11 +43,18 @@ public class Main {
         Flight f2 = new Flight("QR456", "Sydney", "Kuala Lampur", "16:10");
         airport.addFlight(f2);
         airport.assignGateToFlight(f2);
+        
+        Flight f10 = new Flight("AI101", "Delhi", "Prague", "22:55");
+
+        airport.addFlight(f10);
+        airport.assignGateToFlight(f10);
+        
 
         // 3. Add flights to boarding queue
         airport.addToBoardingQueue(f1);
         airport.addToBoardingQueue(f2);
-
+        airport.addToBoardingQueue(f10);
+        
         // 4. View queue
         System.out.println();
         airport.viewBoardingQueue();
@@ -169,6 +166,38 @@ public class Main {
                 f1.getOrigin() + " -> " + f1.getDestination() + " | " +
                 f1.getDepartureTime() + " | " + f1.getStatus());
 
+        
+        //removing flight AI101 from the system
+        System.out.println("\nPrinting out current flight list info: ");
+        for (Flight f : airport.getFlights()) {
+            System.out.println(f.getFlightNumber() + " | " +
+                               f.getOrigin() + " -> " + f.getDestination() + " | " +
+                               f.getDepartureTime() + " | " + f.getStatus());
+        }
+        
+        System.out.println("\nPrinting current boarding queue:");
+        airport.viewBoardingQueue();
+        
+        System.out.println("\nPrinting current gate number of flight AI101\nGate number: " + f10.getGateNumber());
+        
+        System.out.println("\nRemoving flight AI101 from the system:");
+        
+        airport.removeFlightByNumber("AI101");
+        
+        System.out.println("\nPrinting further confirmation:");
+
+        System.out.println("\nChecking updated flight list to see if its been deleted: ");
+        for (Flight f : airport.getFlights()) {
+            System.out.println(f.getFlightNumber() + " | " +
+                               f.getOrigin() + " -> " + f.getDestination() + " | " +
+                               f.getDepartureTime() + " | " + f.getStatus());
+        }
+        
+        System.out.println("\nChecking updated boarding queue to see if its been deleted:");
+        airport.viewBoardingQueue();
+        
+        System.out.println("\nChecking new gate number to see if its been freed\nGate number: " + f10.getGateNumber());
+         
 
 	}
 
