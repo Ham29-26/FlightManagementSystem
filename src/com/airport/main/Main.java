@@ -156,6 +156,7 @@ public class Main {
                                f.getDepartureTime() + " | " + f.getStatus());
         }
         
+        
         //updating flight status
         System.out.println("\nUpdating flight status of flight EK123 to delayed");
         
@@ -197,6 +198,11 @@ public class Main {
         airport.viewBoardingQueue();
         
         System.out.println("\nChecking new gate number to see if its been freed\nGate number: " + f10.getGateNumber());
+        
+        
+        //testing generateSystemReport
+        System.out.println("\nGenerating System Report of Airport Operations");
+        airport.generateSystemReport();
          
 
 	}

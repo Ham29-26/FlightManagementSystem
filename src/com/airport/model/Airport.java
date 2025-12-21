@@ -131,6 +131,20 @@ public class Airport {
 	}
 	
 	
+	public void viewActionHistory() {
+		if (!actionHistory.isEmpty()) {
+	        System.out.println("Current Action History (most recent first):");
+	        int count = 1;
+	        for (String action : getActionHistory()) {  //prints most recent action first as per LIFO
+	            System.out.println(count + ". " + action);
+	            count++;
+	        }
+		} else {
+			System.out.println("No actions recorded");
+		}
+	}
+	
+	
 	public void undoLastAction() {
 		if (!actionHistory.isEmpty()) {
 			//storing the undone action in a separate String variable using the peek() 
@@ -181,15 +195,15 @@ public class Airport {
 		                f.getFlightNumber() + " | " +
 		                f.getOrigin() + " -> " +
 		                f.getDestination() + " | " +
-		                f.getDepartureTime() + " | " +
-		                f.getStatus()
+		                f.getDepartureTime()
 		            );
 				found = true;
 			}
 		}
 		
 		if (!found) {
-			System.out.println("No flights found with status: " + status);
+//			System.out.println("No flights found with status: " + status);
+			System.out.println("No flights with this status");
 		}
 		
 	}
@@ -229,12 +243,12 @@ public class Airport {
 		
 		for (Flight f: flights) {
 			if (f.getFlightNumber().equalsIgnoreCase(flightNumber)) {
-				int freedGate = f.getGateNumber();
+
 				f.setGateNumber(-1);
 				removeFlight(f);
 				boardingQueue.remove(f);
-				actionHistory.push("Flight " + flightNumber + " has been deleted from the system");
 				
+				actionHistory.push("Flight " + flightNumber + " has been deleted from the system");
 				System.out.println("CONFIRMATION: Flight " + flightNumber + " has been deleted from the system");
 				return;
 			}
@@ -242,6 +256,42 @@ public class Airport {
 		
 		System.out.println("ERROR: Flight could not be found");
 	}
+	
+
+	public void generateSystemReport() {
+		System.out.println("==== Airport System Report ====");
+
+		System.out.println("Total flights in system: " + flights.size());
+		System.out.println();
+
+		System.out.println("--- DELAYED FLIGHTS ---");
+		searchFlightsByStatus(FlightStatus.DELAYED);
+		System.out.println();
+
+		System.out.println("--- CANCELLED FLIGHTS ---");	
+		searchFlightsByStatus(FlightStatus.CANCELLED);
+		System.out.println();
+
+		System.out.println("--- SCHEDULED FLIGHTS ---");
+		searchFlightsByStatus(FlightStatus.SCHEDULED);
+		System.out.println();
+
+		System.out.println("--- BOARDING FLIGHTS ---");
+		searchFlightsByStatus(FlightStatus.BOARDING);
+		System.out.println();
+
+		System.out.println("--- BOARDED FLIGHTS ---");
+		searchFlightsByStatus(FlightStatus.BOARDED);
+		System.out.println();
+		
+		System.out.println("Current Boarding Queue:");
+		viewBoardingQueue();
+		System.out.println();
+		
+		System.out.println("Recent Actions:");
+		viewActionHistory();
+	}
+	
 
 
 }
