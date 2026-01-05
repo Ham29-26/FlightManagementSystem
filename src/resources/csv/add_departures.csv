@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+ET500,Ethiopian Airlines,Addis Ababa,London,23:10,SCHEDULED
+EK724,Emirates,Addis Ababa,Dubai,16:40,SCHEDULED
+QR1438,Qatar Airways,Addis Ababa,Doha,14:20,SCHEDULED
+TK677,Turkish Airlines,Addis Ababa,Istanbul,3:05,SCHEDULED
+LH593,Lufthansa,Addis Ababa,Frankfurt,1:30,SCHEDULED
+SV432,Saudia,Addis Ababa,Jeddah,5:50,SCHEDULED
+KQ409,Kenya Airways,Addis Ababa,Nairobi,9:15,SCHEDULED
+MS858,EgyptAir,Addis Ababa,Cairo,18:35,SCHEDULED

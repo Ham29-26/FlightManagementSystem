@@ -1,0 +1,9 @@
+flightNumber,airline,origin,destination,departureTime,status
+EK004,Emirates,London,Dubai,6:10,ARRIVING
+SU520,Aeroflot,Moscow,Dubai,9:45,ARRIVING
+AY191,Finnair,Helsinki,Dubai,13:30,ARRIVING
+5J014,Cebu Pacific,Manila,Dubai,17:20,ARRIVING
+GF506,Gulf Air,Bahrain,Dubai,18:55,ARRIVING
+ET600,Ethiopian Airlines,Addis Ababa,Dubai,20:40,ARRIVING
+TK760,Turkish Airlines,Istanbul,Dubai,22:10,ARRIVING
+FZ102,flyDubai,Bishkek,Dubai,23:35,ARRIVING

@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+LA8081,LATAM Airlines,Los Angeles,Sao Paulo,6:45,ARRIVING
+AA963,American Airlines,Miami,Sao Paulo,9:20,ARRIVING
+BA246,British Airways,London,Sao Paulo,11:55,ARRIVING
+KL792,KLM Royal Dutch Airlines,Amsterdam,Sao Paulo,16:10,ARRIVING
+TP082,TAP Air Portugal,Lisbon,Sao Paulo,18:30,ARRIVING
+UX056,Air Europa,Madrid,Sao Paulo,20:05,ARRIVING
+AV183,Avianca,Bogota,Sao Paulo,22:40,ARRIVING
+AR1244,Aerolíneas Argentinas,Buenos Aires,Sao Paulo,23:55,ARRIVING

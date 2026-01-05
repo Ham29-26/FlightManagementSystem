@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+P4752,Air Peace,Abuja,London,6:30,ARRIVING
+EI155,Aer Lingus,Dublin,London,8:10,ARRIVING
+UL504,SriLankan Airlines,Colombo,London,11:55,ARRIVING
+FI451,Icelandair,Reykjavik,London,14:20,ARRIVING
+AM008,Aeromexico,Mexico City,London,16:45,ARRIVING
+OS457,Austrian Airlines,Vienna,London,18:30,ARRIVING
+TP138,TAP Air Portugal,Lisbon,London,20:05,ARRIVING
+SN210,Brussels Airlines,Brussels,London,22:15,ARRIVING

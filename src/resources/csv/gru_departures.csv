@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+LA8068,LATAM Airlines,Sao Paulo,New York,22:55,SCHEDULED
+EK262,Emirates,Sao Paulo,Dubai,1:05,SCHEDULED
+AF455,Air France,Sao Paulo,Paris,19:40,SCHEDULED
+LH507,Lufthansa,Sao Paulo,Frankfurt,18:20,SCHEDULED
+IB6824,Iberia,Sao Paulo,Madrid,15:35,SCHEDULED
+QR774,Qatar Airways,Sao Paulo,Doha,3:10,SCHEDULED
+CM804,Copa Airlines,Sao Paulo,Panama City,11:25,SCHEDULED
+AZ675,ITA Airways,Sao Paulo,Rome,21:50,SCHEDULED

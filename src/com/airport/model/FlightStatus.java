@@ -6,4 +6,6 @@ public enum FlightStatus {
 	SCHEDULED,
     BOARDING,
     BOARDED,
+    ARRIVING,
+    ARRIVED
 }

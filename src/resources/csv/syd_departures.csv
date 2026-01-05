@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+QF025,Qantas,Sydney,Tokyo,9:30,SCHEDULED
+EY451,Etihad Airways,Sydney,Abu Dhabi,21:40,SCHEDULED
+HA452,Hawaiian Airlines,Sydney,Honolulu,10:55,SCHEDULED
+JQ512,Jetstar Airways,Sydney,Melbourne,7:15,SCHEDULED
+AI301,Air India,Sydney,Delhi,20:25,SCHEDULED
+CZ326,China Southern Airlines,Sydney,Guangzhou,23:10,SCHEDULED
+TR709,Scoot,Sydney,Singapore,12:45,SCHEDULED
+MH122,Malaysia Airlines,Sydney,Kuala Lumpur,16:30,SCHEDULED

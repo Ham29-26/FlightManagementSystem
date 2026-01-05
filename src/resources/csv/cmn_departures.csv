@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+AT202,Royal Air Maroc,Casablanca,New York,16:30,SCHEDULED
+AF189,Air France,Casablanca,Paris,7:45,SCHEDULED
+TK618,Turkish Airlines,Casablanca,Istanbul,13:20,SCHEDULED
+TP143,TAP Air Portugal,Casablanca,Lisbon,10:10,SCHEDULED
+XY276,flynas,Casablanca,Jeddah,18:55,SCHEDULED
+G9312,Air Arabia,Casablanca,Sharjah,21:40,SCHEDULED
+EK752,Emirates,Casablanca,Dubai,23:25,SCHEDULED
+LH1332,Lufthansa,Casablanca,Frankfurt,5:55,SCHEDULED

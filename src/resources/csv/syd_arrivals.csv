@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+QF064,Qantas,Johannesburg,Sydney,6:40,ARRIVING
+NZ102,Air New Zealand,Auckland,Sydney,9:25,ARRIVING
+JQ411,Jetstar Airways,Adelaide,Sydney,11:10,ARRIVING
+GS798,Tianjin Airlines,Chongqing,Sydney,14:35,ARRIVING
+VN787,Vietnam Airlines,Hanoi,Sydney,17:20,ARRIVING
+FJ913,Fiji Airways,Nadi,Sydney,19:05,ARRIVING
+CX161,Cathay Pacific,Hong Kong,Sydney,21:50,ARRIVING
+GA716,Garuda Indonesia,Jakarta,Sydney,23:40,ARRIVING

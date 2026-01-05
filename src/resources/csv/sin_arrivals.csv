@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+SQ319,Singapore Airlines,London,Singapore,6:55,ARRIVING
+QR948,Qatar Airways,Doha,Singapore,9:40,ARRIVING
+TR897,Scoot,Taipei,Singapore,12:25,ARRIVING
+KE643,Korean Air,Seoul,Singapore,15:10,ARRIVING
+CA969,Air China,Beijing,Singapore,17:35,ARRIVING
+BI451,Royal Brunei Airlines,Bandar Seri Begawan,Singapore,19:50,ARRIVING
+JL711,Japan Airlines,Tokyo,Singapore,22:15,ARRIVING
+NX908,Air Macau,Macau,Singapore,17:15,ARRIVING

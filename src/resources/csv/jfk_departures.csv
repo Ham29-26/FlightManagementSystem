@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+AA101,American Airlines,New York,Paris,19:30,SCHEDULED
+AM402,Aeromexico,New York,Mexico City,8:15,SCHEDULED
+EY110,Etihad Airways,New York,Abu Dhabi,22:45,SCHEDULED
+DL215,Delta Air Lines,New York,Seattle,14:20,SCHEDULED
+LX017,Swiss International Air Lines,New York,Zurich,21:10,SCHEDULED
+AZ605,ITA Airways,New York,Rome,17:55,SCHEDULED
+LH401,Lufthansa,New York,Frankfurt,18:40,SCHEDULED
+B6103,JetBlue Airways,New York,Orlando,9:05,SCHEDULED

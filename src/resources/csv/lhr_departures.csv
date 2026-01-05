@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+BA249,British Airways,London,Rio de Janeiro,22:10,SCHEDULED
+LX337,Swiss International Air Lines,London,Geneva,7:25,SCHEDULED
+SK526,Scandinavian Airlines,London,Stockholm,9:50,SCHEDULED
+KL1001,KLM Royal Dutch Airlines,London,Amsterdam,11:40,SCHEDULED
+QR012,Qatar Airways,London,Doha,15:30,SCHEDULED
+VS601,Virgin Atlantic,London,Cape Town,18:55,SCHEDULED
+SQ317,Singapore Airlines,London,Singapore,21:15,SCHEDULED
+ZH988,Shenzhen Airlines,London,Shenzhen,23:35,SCHEDULED

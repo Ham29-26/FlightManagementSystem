@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+TK004,Turkish Airlines,Miami,Istanbul,8:55,ARRIVING
+T5533,Turkmenistan Airlines,Ashgabat,Istanbul,12:40,ARRIVING
+G9164,Air Arabia,Sharjah,Istanbul,15:25,ARRIVING
+YW301,Libyan Wings,Tripoli,Istanbul,17:10,ARRIVING
+XC822,Corendon Airlines,Gaziantep,Istanbul,18:45,ARRIVING
+3U381,Sichuan Airlines,Chengdu,Istanbul,20:30,ARRIVING
+RQ908,KAM Air,Kabul,Istanbul,22:05,ARRIVING
+ME266,Middle East Airlines,Beirut,Istanbul,23:50,ARRIVING

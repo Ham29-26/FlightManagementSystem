@@ -1,0 +1,9 @@
+flightNumber,airline,origin,destination,departureTime,status
+EK123,Emirates,Dubai,New York,22:35,SCHEDULED
+SQ194,Singapore Airlines,Dubai,Singapore,14:55,SCHEDULED
+QR131,Qatar Airways,Dubai,Doha,9:30,SCHEDULED
+BA204,British Airways,Dubai,London,18:10,SCHEDULED
+AI101,Air India,Dubai,Delhi,6:45,SCHEDULED
+LH759,Lufthansa,Dubai,Frankfurt,13:20,SCHEDULED
+AF389,Air France,Dubai,Paris,11:05,SCHEDULED
+UA982,United Airlines,Dubai,San Francisco,23:50,SCHEDULED

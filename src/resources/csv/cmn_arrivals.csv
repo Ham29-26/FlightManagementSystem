@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+IB513,Iberia,Madrid,Casablanca,8:20,ARRIVING
+MS618,EgyptAir,Cairo,Casablanca,11:05,ARRIVING
+L6124,Mauritania Airlines,Nouakchott,Casablanca,13:50,ARRIVING
+TK617,Turkish Airlines,Istanbul,Casablanca,15:35,ARRIVING
+SV327,Saudia,Riyadh,Casablanca,17:45,ARRIVING
+KU401,Kuwait Airways,Kuwait City,Casablanca,19:30,ARRIVING
+TU731,Tunisair,Tunis,Casablanca,21:10,ARRIVING
+HV5749,Transavia,Amsterdam,Casablanca,23:00,ARRIVING

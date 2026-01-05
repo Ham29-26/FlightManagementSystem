@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+ET921,Ethiopian Airlines,Washington D.C.,Addis Ababa,7:10,ARRIVING
+BA639,British Airways,London,Addis Ababa,6:20,ARRIVING
+EK723,Emirates,Dubai,Addis Ababa,13:45,ARRIVING
+AI755,Air India,Delhi,Addis Ababa,15:30,ARRIVING
+AF467,Air France,Paris,Addis Ababa,19:05,ARRIVING
+RJ403,Royal Jordanian,Amman,Addis Ababa,21:40,ARRIVING
+WB120,RwandAir,Kigali,Addis Ababa,22:55,ARRIVING
+SN464,Brussels Airlines,Brussels,Addis Ababa,23:50,ARRIVING

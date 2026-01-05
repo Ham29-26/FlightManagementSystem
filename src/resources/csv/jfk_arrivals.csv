@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+DL183,Delta Air Lines,Milan,New York,7:10,ARRIVING
+QR701,Qatar Airways,Doha,New York,14:35,ARRIVING
+KL642,KLM Royal Dutch Airlines,Amsterdam,New York,16:50,ARRIVING
+AA168,American Airlines,Tokyo,New York,18:20,ARRIVING
+EI104,Aer Lingus,Dublin,New York,11:45,ARRIVING
+B6118,JetBlue Airways,Kingston,New York,13:30,ARRIVING
+AS238,Alaska Airlines,Denver,New York,19:05,ARRIVING
+CX840,Cathay Pacific,Hong Kong,New York,21:40,ARRIVING

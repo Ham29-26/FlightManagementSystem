@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+SQ608,Singapore Airlines,Singapore,Seoul,23:45,SCHEDULED
+BG565,Biman Bangladesh Airlines,Singapore,Dhaka,7:30,SCHEDULED
+TR452,Scoot,Singapore,Kuala Lumpur,9:10,SCHEDULED
+UB802,Myanmar Airways International,Singapore,Yangon,11:55,SCHEDULED
+GA839,Garuda Indonesia,Singapore,Jakarta,13:40,SCHEDULED
+TG404,Thai Airways,Singapore,Phuket,15:25,SCHEDULED
+AK372,AirAsia,Singapore,Hanoi,18:10,SCHEDULED
+AI343,Air India,Singapore,Delhi,20:50,SCHEDULED

@@ -1,0 +1,9 @@
+﻿flightNumber,airline,origin,destination,time,status
+TK072,Turkish Airlines,Istanbul,Guangzhou,23:30,SCHEDULED
+IR652,Iran Air,Istanbul,Tehran,10:15,SCHEDULED
+SU213,Aeroflot,Istanbul,Moscow,14:40,SCHEDULED
+J2015,Azerbaijan Airlines,Istanbul,Baku,9:20,SCHEDULED
+PC412,Pegasus Airlines,Istanbul,Izmir,7:50,SCHEDULED
+FZ754,flydubai,Istanbul,Dubai,18:10,SCHEDULED
+SV258,Saudia,Istanbul,Medina,2:05,SCHEDULED
+JU423,Air Serbia,Istanbul,Belgrade,16:35,SCHEDULED

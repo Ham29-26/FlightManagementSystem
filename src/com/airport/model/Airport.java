@@ -1,5 +1,6 @@
 package com.airport.model;
 
+import java.io.InputStream;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayDeque;
@@ -8,18 +9,21 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class Airport {
 	
 	private List<Flight> flights;
 	private List<Gate> gates;
 	private Queue<Flight> boardingQueue;
+	private Queue<Flight> arrivingQueue;
 	private Deque<String> actionHistory;  //being used as a stack
 
 	public Airport() {
 		flights = new ArrayList<>();
 		gates = new ArrayList<>();
 		boardingQueue = new ArrayDeque<>();
+		arrivingQueue = new ArrayDeque<>();
 		actionHistory = new ArrayDeque<>();
 	}
 	
@@ -36,8 +40,17 @@ public class Airport {
 		flights.add(flight);
 	}
 	
+	public void addAllFlights(List<Flight> flights) {
+		if (flights == null) return;
+		this.flights.addAll(flights);
+	}
+	
 	public void removeFlight(Flight flight) {
 		flights.remove(flight);
+	}
+	
+	public void clearFlights() {
+		flights.clear();
 	}
 	
 	
@@ -53,49 +66,124 @@ public class Airport {
 		return flights;
 	}
 	
+	public List<Gate> getGates() {
+		return gates;
+	}
+	
+	public Queue<Flight> getBoardingQueue() {
+		return boardingQueue;
+	}
+	
+	public Queue<Flight> getArrivingQueue() {
+		return arrivingQueue;
+	}
+	
 	public Deque<String> getActionHistory() {
 	    return actionHistory;
 	}
 	
+	public void clearBoardingQueue() {
+		boardingQueue.clear();
+	}
+	
+	public void clearArrivingQueue() {
+		arrivingQueue.clear();
+	}
+	
+	public void clearActionHistory() {
+		actionHistory.clear();
+	}
+	
+	public void freeAllGates() {
+		
+		for (Gate g: gates) {
+			g.setAvailable(true);
+		}
+	}
+	
 	//airport logic methods are implemented from here onwards
-	public void assignGateToFlight(Flight flight) {
+	public String assignGateToFlight(Flight flight) {
 		boolean assigned = false;   //using a boolean variable to keep track of assigned status
+		String output = "";
 		
 		for (Gate g: gates) {
 			if (g.isAvailable() == true) {
 				flight.setGateNumber(g.getGateNumber());
 				g.setAvailable(false);
+				output = "Gate " + g.getGateNumber() + " successfully assigned to flight " + flight.getFlightNumber() + "\n";
 				actionHistory.push("Assigned gate " + g.getGateNumber() + " to flight " + flight.getFlightNumber());
 				assigned = true;
 				break;   //stops loop once a gate is assigned
-				
 			}
 		}
 		
 		if (!assigned) {
-			System.out.println("There are no available gates");
+			output = "There are no available gates";
 		}
+		
+		return output;
 		
 	}
 	
 	
-	public void addToBoardingQueue(Flight flight) {
+	public String addToBoardingQueue(Flight flight) {
+		String output = "";
+		
 		if (flight.getGateNumber() != -1) {
 			boardingQueue.add(flight);
+			output = "Successfully added flight " + flight.getFlightNumber() + " to the boarding queue";
 			actionHistory.push("Added flight " + flight.getFlightNumber() + " to boarding queue");
-			System.out.println("Successfully added flight " + flight.getFlightNumber() + " to the boarding queue");
+		
+			return output;
+			
 		} else {
-			System.out.println("ERROR: Flight has not been assigned a gate");
+			output = "ERROR: Flight has not been assigned a gate";
 		}
+		
+		return output;
 	}
 	
 	
-	public void boardNextFlight() {
-		if (!boardingQueue.isEmpty()) {
-			Flight first = boardingQueue.remove();
+	public String addToArrivingQueue(Flight flight) {
+		String output = "";
+		
+		if (flight.getGateNumber() != -1) {
+			arrivingQueue.add(flight);
+			output = "Successfully added flight " + flight.getFlightNumber() + " to the arriving queue";
+			actionHistory.push("Added flight " + flight.getFlightNumber() + " to arriving queue");
+		
+			return output;
+			
+		} else {
+			output = "ERROR: Flight has not been assigned a gate";
+		}
+		
+		return output;
+	}
+	
+	
+	public String processNextFlight(Queue<Flight> inputQueue) {
+		String s1 = "";
+		String s2 = "";
+		FlightStatus status = null;
+		
+		if (inputQueue == boardingQueue) {
+			s1 = "boarded from";
+			s2 = "Boarding";
+			status = FlightStatus.BOARDED;
+		} else if (inputQueue == arrivingQueue) {
+			s1 = "arrived in";
+			s2 = "Arriving";
+			status = FlightStatus.ARRIVED;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		
+		if (!inputQueue.isEmpty()) {
+			Flight first = inputQueue.remove();
 			int firstGate = first.getGateNumber();
 			
-			first.setStatus(FlightStatus.BOARDED);
+			first.setStatus(status);
 			
 			for (Gate g: gates) {
 				if (g.getGateNumber() == firstGate) {
@@ -105,47 +193,74 @@ public class Airport {
 			
 			first.setGateNumber(-1);
 			
-			actionHistory.push("Flight " + first.getFlightNumber() + " boarded from gate " + firstGate);
+			sb.append("Flight " + first.getFlightNumber() + " " + s1 + " gate " + firstGate);
 			
-			System.out.println("Flight " + first.getFlightNumber() + " boarded from gate " + firstGate);
+			actionHistory.push("Flight " + first.getFlightNumber() + " " + s1 + " gate " + firstGate);
+			
+			return sb.toString();
 			
 		} else {
-			System.out.println("No flights in boarding queue");
+			sb.append("No flights in " + s2 + " queue");
 		}
+		
+		return sb.toString();
+		
 	}
+
 	
 	
-	public void viewBoardingQueue() {
-		if (!boardingQueue.isEmpty()) {
-			System.out.println("Flights waiting to board:");
+	public String viewQueue(Queue<Flight> inputQueue) {
+		String s1 = "";
+		String s2 = "";
+		
+		if (inputQueue == boardingQueue) {
+			s1 = "board";
+			s2 = "Boarding";
+		} else if (inputQueue == arrivingQueue) {
+			s1 = "arrive";
+			s2 = "Arriving";
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		
+		if (!inputQueue.isEmpty()) {
+			sb.append("Flights waiting to " + s1 + ":\n");
 			int serialCount = 1;
 			
-			for (Flight f: boardingQueue) {
-				System.out.println(serialCount + ". " + f.getFlightNumber());
+			for (Flight f: inputQueue) {
+				sb.append(serialCount + ". " + f.getFlightNumber() + "\n");
 				serialCount++;
 			}
+			return sb.toString();
 			
 		} else {
-			System.out.println("Boarding queue is empty");
+			sb.append(s2 + " queue is empty");
 		}
+		return sb.toString();
+		
 	}
 	
 	
-	public void viewActionHistory() {
+	public String viewActionHistory() {
+		String output = "";
 		if (!actionHistory.isEmpty()) {
-	        System.out.println("Current Action History (most recent first):");
+	        output = "Current Action History (most recent first):\n";
 	        int count = 1;
 	        for (String action : getActionHistory()) {  //prints most recent action first as per LIFO
-	            System.out.println(count + ". " + action);
+	            output += count + ". " + action + "\n";
 	            count++;
 	        }
+	        return output;
 		} else {
-			System.out.println("No actions recorded");
+			output = "No actions recorded";
 		}
+		return output;
 	}
 	
 	
-	public void undoLastAction() {
+	public String undoLastAction() {
+		String output = "";
+		
 		if (!actionHistory.isEmpty()) {
 			//storing the undone action in a separate String variable using the peek() 
             //method so as to not accidentally delete the recently completed action
@@ -155,10 +270,13 @@ public class Airport {
 			actionHistory.pop();
 			
 			//confirming the requested action has been undone
-			System.out.println("Undid action: " + action);
+			output = "Undid action: " + action;
+			
 		} else {
-			System.out.println("No actions to undo");
+			output = "No actions to undo";
 		}
+		
+		return output;
 	}
 	
 	
@@ -186,25 +304,25 @@ public class Airport {
 	}
 	
 	
-	public void searchFlightsByStatus(FlightStatus status) {
+	public String searchFlightsByStatus(FlightStatus status) {
+		String output = "";
 		boolean found = false;
 		
 		for (Flight f: flights) {
 			if (f.getStatus() == status) {
-				System.out.println(
-		                f.getFlightNumber() + " | " +
-		                f.getOrigin() + " -> " +
-		                f.getDestination() + " | " +
-		                f.getDepartureTime()
-		            );
+				output += f.getFlightNumber() + " | " +
+						 f.getOrigin() + " -> " +
+						 f.getDestination() + " | " +
+						 f.getDepartureTime() + "\n";
 				found = true;
 			}
 		}
 		
 		if (!found) {
-//			System.out.println("No flights found with status: " + status);
-			System.out.println("No flights with this status");
+			output = "No flights with this status";
 		}
+		
+		return output;
 		
 	}
 	
@@ -223,75 +341,122 @@ public class Airport {
 	}
 	
 	
-	public void updateFlightStatus(String flightNumber, FlightStatus newStatus) {
-		
+	public String updateFlightStatus(String flightNumber, FlightStatus newStatus) {
 		for (Flight f: flights) {
 			if (f.getFlightNumber().equalsIgnoreCase(flightNumber)) {
 				f.setStatus(newStatus);
 				
+				String output = "CONFIRMATION: Updated flight " + flightNumber + " status to " + newStatus;
 				actionHistory.push("Updated flight " + flightNumber + " status to " + newStatus);
-				System.out.println("CONFIRMATION: Updated flight " + flightNumber + " status to " + newStatus);
-				return;
+				
+				return output;
 			}
 		}
 		
-		System.out.println("ERROR: Flight could not be found"); 
+		return "ERROR: Flight could not be found"; 
 	}
 	
 	
-	public void removeFlightByNumber(String flightNumber) {
+	public String removeFlightByNumber(String flightNumber, Queue<Flight> inputQueue) {
 		
 		for (Flight f: flights) {
 			if (f.getFlightNumber().equalsIgnoreCase(flightNumber)) {
 
 				f.setGateNumber(-1);
 				removeFlight(f);
-				boardingQueue.remove(f);
+				inputQueue.remove(f);
 				
-				actionHistory.push("Flight " + flightNumber + " has been deleted from the system");
-				System.out.println("CONFIRMATION: Flight " + flightNumber + " has been deleted from the system");
-				return;
+				String output = "CONFIRMATION: Flight " + flightNumber + " has been removed from the system";
+				actionHistory.push("Removed flight " + flightNumber + " from the system");
+				
+				return output;
 			}
 		}
 		
-		System.out.println("ERROR: Flight could not be found");
+		return "ERROR: Flight could not be found";
+		
 	}
 	
 
-	public void generateSystemReport() {
-		System.out.println("==== Airport System Report ====");
-
-		System.out.println("Total flights in system: " + flights.size());
-		System.out.println();
-
-		System.out.println("--- DELAYED FLIGHTS ---");
-		searchFlightsByStatus(FlightStatus.DELAYED);
-		System.out.println();
-
-		System.out.println("--- CANCELLED FLIGHTS ---");	
-		searchFlightsByStatus(FlightStatus.CANCELLED);
-		System.out.println();
-
-		System.out.println("--- SCHEDULED FLIGHTS ---");
-		searchFlightsByStatus(FlightStatus.SCHEDULED);
-		System.out.println();
-
-		System.out.println("--- BOARDING FLIGHTS ---");
-		searchFlightsByStatus(FlightStatus.BOARDING);
-		System.out.println();
-
-		System.out.println("--- BOARDED FLIGHTS ---");
-		searchFlightsByStatus(FlightStatus.BOARDED);
-		System.out.println();
+	public String generateSystemReport() {
+		StringBuilder sb = new StringBuilder();
 		
-		System.out.println("Current Boarding Queue:");
-		viewBoardingQueue();
-		System.out.println();
+		sb.append("==== Airport System Report ====\n");
+
+		sb.append("Total flights in system: " + flights.size() + "\n");
+
+		sb.append("\n\n--- DELAYED FLIGHTS ---\n");
+		sb.append(searchFlightsByStatus(FlightStatus.DELAYED));
+
+		sb.append("\n\n--- CANCELLED FLIGHTS ---\n");	
+		sb.append(searchFlightsByStatus(FlightStatus.CANCELLED));
+
+		sb.append("\n\n--- SCHEDULED FLIGHTS ---\n");
+		sb.append(searchFlightsByStatus(FlightStatus.SCHEDULED));
+
+		sb.append("\n--- BOARDING FLIGHTS ---\n");
+		sb.append(searchFlightsByStatus(FlightStatus.BOARDING));
+
+		sb.append("\n\n--- BOARDED FLIGHTS ---\n");
+		sb.append(searchFlightsByStatus(FlightStatus.BOARDED));
 		
-		System.out.println("Recent Actions:");
-		viewActionHistory();
+		sb.append("\n\n--- ARRIVING FLGIHTS ---\n");
+		sb.append(searchFlightsByStatus(FlightStatus.ARRIVING));
+		
+		sb.append("\n--- ARRIVED FLGIHTS ---\n");
+		sb.append(searchFlightsByStatus(FlightStatus.ARRIVED));
+		
+		sb.append("\n\nCurrent Boarding Queue:\n");
+		sb.append(viewQueue(boardingQueue));
+		
+		sb.append("\n\nCurrent Arriving Queue:\n");
+		sb.append(viewQueue(arrivingQueue));
+		
+		sb.append("\nRecent Actions:\n");
+		sb.append(viewActionHistory());
+		
+		
+		return sb.toString();
+		
 	}
 	
+	
+	//method to read CSV files
+	public List<Flight> readFlightsFromCSV(String resourcePath) {
+	    List<Flight> flights = new ArrayList<>();
+
+	    try (InputStream is = getClass().getResourceAsStream(resourcePath);
+	         Scanner sc = new Scanner(is)) {
+
+	        if (is == null) {
+	            throw new RuntimeException("CSV not found: " + resourcePath);
+	        }
+
+	        // skip header
+	        if (sc.hasNextLine()) sc.nextLine();
+
+	        while (sc.hasNextLine()) {
+	            String line = sc.nextLine();
+	            String[] tokens = line.split(",");
+
+	            String flightNumber = tokens[0].trim();
+	            String airline = tokens[1].trim();
+	            String origin = tokens[2].trim();
+	            String destination = tokens[3].trim();
+	            String time = tokens[4].trim();
+	            FlightStatus status = FlightStatus.valueOf(tokens[5].trim());
+
+	            flights.add(
+	                new Flight(flightNumber, airline, origin, destination, time, status)
+	            );
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return flights;
+	}
 
 
 }
